@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Clientes</title>
+</head>
+<body>
+  <h1>Listado de clientes</h1>
+
+  <div id="misClientes"></div>
+
+  <script type="text/javascript">
+
+    const obtenerClientes = async (url) => {
+
+      let url = 'http://localhost:5111/api/Articulos/ObtenerClientes';
+
+      let dataResponse;
+
+      await fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          dataResponse = data;
+        });
+
+      console.log('api response', dataResponse)
+
+      let miDiv = document.getElementById("misClientes");
+
+      dataResponse.forEach(cliente => {
+        miDiv.innerHTML += cliente.nombreCliente + "<br/>";
+      })
+
+    //  return dataResponse;
+
+    }
+
+    obtenerClientes();
+
+
+  </script>
+
+</body>
+</html>
