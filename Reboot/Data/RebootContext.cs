@@ -17,5 +17,9 @@ namespace Reboot.Data
         public DbSet<Reboot.Models.ArticuloFerreteria> ArticuloFerreteria { get; set; } = default!;
 
         public DbSet<Reboot.Models.Cliente> Cliente { get; set; } = default!;
+
+        public DbSet<Reboot.Models.Pedido> Pedido { get; set; } = default!;
+
+        public DbSet<Reboot.Models.DetalleDelPedido> DetalleDelPedido { get; set; } = default!;
     }
 }
