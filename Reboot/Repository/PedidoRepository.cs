@@ -12,10 +12,21 @@ namespace Reboot.Repository
             _context = context;
         }
 
-        public Pedido ObtenerPedido(int id)
+        public Pedido ObtenerPedido(int idDelPedido)
         {
-            var elPedido = _context.Pedido.Where(pedido => pedido.Id == id).FirstOrDefault();
+            Pedido elPedido = _context
+                .Pedido
+                .Where(ddd => ddd.Id == idDelPedido)
+                .FirstOrDefault();
 
+            elPedido.DetalleDelPedido = _context.DetalleDelPedido
+                .Where(dp => dp.IdDelPedido == idDelPedido)
+                .ToList();
+
+            elPedido.ClienteDelPedido = _context.Cliente
+          .Where(cliente => cliente.Id == elPedido.ClienteId)
+          .FirstOrDefault();
+             
             return elPedido;
         }
     }
