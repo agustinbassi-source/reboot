@@ -2,10 +2,9 @@
 
 namespace Reboot.Models
 {
-    public class Cliente
+    public class Cliente : MiClaseBase
     {
-        [Key]
-        public int Id { get; set; }
+
         public string NombreCliente { get; set; }
     }
 }

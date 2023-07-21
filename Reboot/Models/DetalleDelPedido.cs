@@ -2,7 +2,7 @@
 
 namespace Reboot.Models
 {
-    public class DetalleDelPedido
+    public class DetalleDelPedido : MiClaseBase
     {
         public int ArticuloFerreteriaId { get; set; }
 

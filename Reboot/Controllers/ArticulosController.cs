@@ -26,14 +26,6 @@ namespace Reboot.Controllers
             return Ok(listado);
         }
 
-        [HttpGet(Name = "ObtenerClientes")]
-        public IActionResult ObtenerClientes()
-        {
-            List<Cliente> listado = new List<Cliente>();
-
-            listado = _context.Cliente.ToList();
-
-            return Ok(listado);
-        }
+       
     }
 }

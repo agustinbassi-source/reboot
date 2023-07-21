@@ -3,10 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Reboot.Models
 {
-    public class Pedido
+    public class Pedido: MiClaseBase
     {
-        [Key]
-        public int Id { get; set; }
+   
         public DateTime FechaDelPedido { get; set; }
         public int ClienteId { get; set; }
 
