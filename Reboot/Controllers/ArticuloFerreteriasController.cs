@@ -10,7 +10,7 @@ using Reboot.Models;
 
 namespace Reboot.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ArticuloFerreteriasController : ControllerBase
     {
@@ -25,10 +25,10 @@ namespace Reboot.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ArticuloFerreteria>>> GetArticuloFerreteria()
         {
-          if (_context.ArticuloFerreteria == null)
-          {
-              return NotFound();
-          }
+            if (_context.ArticuloFerreteria == null)
+            {
+                return NotFound();
+            }
             return await _context.ArticuloFerreteria.ToListAsync();
         }
 
@@ -36,10 +36,10 @@ namespace Reboot.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ArticuloFerreteria>> GetArticuloFerreteria(int id)
         {
-          if (_context.ArticuloFerreteria == null)
-          {
-              return NotFound();
-          }
+            if (_context.ArticuloFerreteria == null)
+            {
+                return NotFound();
+            }
             var articuloFerreteria = await _context.ArticuloFerreteria.FindAsync(id);
 
             if (articuloFerreteria == null)
@@ -48,6 +48,18 @@ namespace Reboot.Controllers
             }
 
             return articuloFerreteria;
+        }
+
+        // GET: api/ArticuloFerreterias/5
+        [HttpGet("{texto}")]
+        public async Task<ActionResult<List<ArticuloFerreteria>>> BuscarArticulos(string texto)
+        {
+            var articulosEncontrados = _context
+                .ArticuloFerreteria
+                .Where(x => x.NombreDeArticulo.Contains(texto))
+                .ToList();
+
+            return articulosEncontrados;
         }
 
         // PUT: api/ArticuloFerreterias/5
@@ -86,10 +98,10 @@ namespace Reboot.Controllers
         [HttpPost]
         public async Task<ActionResult<ArticuloFerreteria>> PostArticuloFerreteria(ArticuloFerreteria articuloFerreteria)
         {
-          if (_context.ArticuloFerreteria == null)
-          {
-              return Problem("Entity set 'RebootContext.ArticuloFerreteria'  is null.");
-          }
+            if (_context.ArticuloFerreteria == null)
+            {
+                return Problem("Entity set 'RebootContext.ArticuloFerreteria'  is null.");
+            }
             _context.ArticuloFerreteria.Add(articuloFerreteria);
             await _context.SaveChangesAsync();
 
