@@ -9,6 +9,9 @@
 
   <div id="misClientes"></div>
 
+  <input type="text" id="txtNombre" />
+  <input type="button" value="Crear cliente" onclick="crearCliente()" />
+
   <script type="text/javascript">
 
     const obtenerClientes = async () => {
@@ -27,6 +30,8 @@
 
       let miDiv = document.getElementById("misClientes");
 
+      miDiv.innerHTML = ""
+
       dataResponse.forEach(cliente => {
         miDiv.innerHTML += cliente.nombreCliente + "<br/>";
       })
@@ -34,6 +39,27 @@
     }
 
     obtenerClientes();
+
+    const crearCliente = async () => {
+
+      let url = 'http://localhost:5111/api/Clientes';
+
+      let data = {
+        "id": 0,
+        "nombreCliente": document.getElementById("txtNombre").value
+      }
+
+    await  fetch(url, {
+        method: "POST", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      obtenerClientes();
+
+    }
 
 
   </script>
