@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Demo DOM</title>
+</head>
+<body>
+
+  <select id="miLista">
+    <option>Valor 1</option>
+    <option>Valor 2</option>
+  </select>
+
+
+
+  <input type="text" id="txtTexto" />
+  <input type="button" value="Agregar elemento" onclick="pruebaAgregarElemento()" />
+
+  <script>
+
+    const pruebaAgregarElemento = () => {
+
+      let nuevaOpcion = document.createElement("option");
+
+      nuevaOpcion.textContent = document.getElementById("txtTexto").value
+
+      if (nuevaOpcion.textContent == "") {
+        alert("El nombre es obligatorio!")
+        return;
+      }
+
+      if (nuevaOpcion.textContent.length < 3) {
+        alert("Debe completar al menos 3 caracteres")
+        return;
+      }
+
+      let laLista = document.getElementById("miLista")
+
+      laLista.appendChild(nuevaOpcion)
+
+    }
+
+  </script>
+
+</body>
+</html>

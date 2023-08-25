@@ -10,16 +10,35 @@ namespace Reboot.Business
 
         public ClienteBusiness(RebootContext context)
         {
-             _repository = new ClienteRepository(context);
+            _repository = new ClienteRepository(context);
         }
 
         public int CrearCliente(Cliente algunCliente)
-        {
-            var idGeneradoDeCliente = 0;
+        {    
+            if (algunCliente == null)
+            {
+                throw new Exception("El cliente llego en null");
+            }
 
-            idGeneradoDeCliente =  _repository.CrearCliente(algunCliente);
+            algunCliente.Validate();
+
+            var idGeneradoDeCliente = _repository.CrearCliente(algunCliente);
 
             return idGeneradoDeCliente;
+        }
+
+        public int ActualizarCliente(Cliente algunCliente)
+        {
+            if (algunCliente == null)
+            {
+                throw new Exception("El cliente llego en null");
+            }
+
+            algunCliente.Validate();
+
+          //  TODO actualiza cliente
+
+            return 0;
         }
 
         public List<Cliente> ObtenerClientes()

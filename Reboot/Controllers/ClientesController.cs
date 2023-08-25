@@ -22,11 +22,18 @@ namespace Reboot.Controllers
         [HttpPost(Name = "CrearCliente")]
         public IActionResult CrearClientes(Cliente elCLienteDelHtml)
         {
-            // 1 - Crear clientes
-            var idDelCLiente = _clienteBusiness.CrearCliente(elCLienteDelHtml);
+            try
+            {
+                // 1 - Crear clientes
+                var idDelCLiente = _clienteBusiness.CrearCliente(elCLienteDelHtml);
 
-            // 2 - Retornar ok
-            return Ok(idDelCLiente);
+                // 2 - Retornar ok
+                return Ok(idDelCLiente);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet(Name = "ObtenerClientes")]

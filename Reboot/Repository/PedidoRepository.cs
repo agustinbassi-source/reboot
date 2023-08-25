@@ -24,8 +24,8 @@ namespace Reboot.Repository
                 .ToList();
 
             elPedido.ClienteDelPedido = _context.Cliente
-          .Where(cliente => cliente.Id == elPedido.ClienteId)
-          .FirstOrDefault();
+              .Where(cliente => cliente.Id == elPedido.ClienteId)
+              .FirstOrDefault();
              
             return elPedido;
         }
