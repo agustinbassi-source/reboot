@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+  <a href="pagina2.html">Click!</a>
+
+  <input type="button" onclick="redireccionar()" />
+
+  <script type="text/javascript">
+
+    const redireccionar = () => {
+
+      window.location.href = "pagina2.html";
+
+
+      let url1 = "x.html" // Dentro de la carpeta en la que estoy, busca ese archivo
+      let url2 = "/x.html" // Desde el raiz de mi web va a buscar ese archivo
+      let url3 = "/miCarpeta/x.html" // Desde el raiz de mi web va a buscar esa carpeta y archivo
+      let url4 = "http://mistion.com/x.html" // Repito los de arriba
+      let url5 = "../x.html" // Voy a un directorio padre y a partir de ahi busco el archivo
+      let url6 = "../../x.html" // Voy a un directorio abuelo y a partir de ahi busco el archivo
+      let url7 = "/cliente"
+    }
+
+
+  </script>
+
+</body>
+</html>
