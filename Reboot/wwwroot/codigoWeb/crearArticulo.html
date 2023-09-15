@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+  Categoria <select id="categorias" onchange="obtenerSubCategorias()">
+    <option>Seleccionar</option>
+  </select>
+
+  <br />
+
+ SubCategoria <select id="subCategorias">
+    <option>Seleccionar</option>
+  </select>
+
+
+  <script>
+
+    const obtenerCategorias = async () => {
+
+      let categorias = []
+
+      await fetch('http://localhost:5111/api/Categorias')
+        .then((response) => response.json())
+        .then((data) => {
+          categorias = data;
+        });
+
+      console.log(categorias)
+
+      let selectCategorias = document.getElementById('categorias')
+
+      categorias.forEach(categoria => {
+
+        let option = document.createElement('option')
+
+        option.text = categoria.nombre
+        option.value = categoria.id
+
+        selectCategorias.appendChild(option)
+ 
+      })
+
+    }
+
+    obtenerCategorias()
+
+    const obtenerSubCategorias = async () => {
+
+      let selectCategorias = document.getElementById('categorias')
+
+      let categoriaId = selectCategorias.value
+
+      console.log('categoria seleccionada', categoriaId)
+
+      let selectSubCategorias = document.getElementById('subCategorias')
+
+      selectSubCategorias.innerHTML = ''
+
+      //let categorias = []
+
+      //await fetch('http://localhost:5111/api/SubCategorias')
+      //  .then((response) => response.json())
+      //  .then((data) => {
+      //    categorias = data;
+      //  });
+
+      //console.log(categorias)
+
+      //let selectCategorias = document.getElementById('categorias')
+
+      //categorias.forEach(categoria => {
+
+      //  let option = document.createElement('option')
+
+      //  option.text = categoria.nombre
+
+      //  selectCategorias.appendChild(option)
+
+      //})
+
+    }
+
+    const crearArticulo = async () => {
+
+      //let url = 'http://localhost:5111/api/Clientes';
+
+      //let data = {
+      //  "id": 0,
+      //  "nombreCliente": document.getElementById("txtNombre").value
+      //}
+
+      //await fetch(url, {
+      //  method: "POST",
+      //  headers: {
+      //    "Content-Type": "application/json",
+      //  },
+      //  body: JSON.stringify(data),
+      //});
+
+      //obtenerClientes();
+
+    }
+
+
+  </script>
+
+
+</body>
+</html>
