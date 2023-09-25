@@ -19,7 +19,17 @@ namespace Reboot.Business
             {
                 throw new Exception("El cliente llego en null");
             }
+ 
+            var clientesExistentes =  _repository.ObtenerClientes();
 
+            foreach (var cliente in clientesExistentes)
+            {
+                if (cliente.CUIL ==  algunCliente.CUIL)
+                {
+                    throw new Exception("El cliente ya existe en el sistema");
+                }
+            }
+  
             algunCliente.Validate();
 
             var idGeneradoDeCliente = _repository.CrearCliente(algunCliente);

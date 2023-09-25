@@ -26,5 +26,13 @@ namespace Reboot.Controllers
 
             return Ok(pedido);
         }
+
+        [HttpGet(Name = "EliminarDetalleDelPedido")]
+        public IActionResult EliminarDetalleDelPedido(int idDetalleDelPedido)
+        {
+            _pedidoBusiness.EliminarDetalleDelPedido(idDetalleDelPedido);
+
+            return Ok();
+        }
     }
 }

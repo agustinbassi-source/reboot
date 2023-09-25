@@ -24,7 +24,9 @@ namespace Reboot.Repository
 
         public List<Cliente> ObtenerClientes() 
         {
-            return _context.Cliente.ToList();
+            return _context.Cliente
+                .Where(x=> x.Disable == null || x.Disable == false)
+                .ToList();
         }
     }
 }

@@ -20,7 +20,8 @@ namespace Reboot.Repository
                 .FirstOrDefault();
 
             elPedido.DetalleDelPedido = _context.DetalleDelPedido
-                .Where(dp => dp.IdDelPedido == idDelPedido)
+                .Where(dp => dp.IdDelPedido == idDelPedido &&
+                                dp.Disable == false)
                 .ToList();
 
             elPedido.ClienteDelPedido = _context.Cliente
@@ -28,6 +29,15 @@ namespace Reboot.Repository
               .FirstOrDefault();
              
             return elPedido;
+        }
+
+        public void EliminarDetalleDelPedido(int idDetalle)
+        {
+            _context.DetalleDelPedido.Where(x => x.Id == idDetalle)
+                .FirstOrDefault()
+                .Disable = true;
+
+            _context.SaveChanges();
         }
     }
 }

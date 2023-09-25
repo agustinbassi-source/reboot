@@ -19,5 +19,12 @@ namespace Reboot.Business
 
             return elPedido;
         }
+
+        public void EliminarDetalleDelPedido(int idDetalle)
+        {
+             _pedidoRepository.EliminarDetalleDelPedido(idDetalle);
+
+           
+        }
     }
 }

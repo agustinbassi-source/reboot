@@ -6,5 +6,6 @@ namespace Reboot.Models
     {
         [Key]
         public int Id { get; set; }
+        public bool? Disable { get; set; }
     }
 }

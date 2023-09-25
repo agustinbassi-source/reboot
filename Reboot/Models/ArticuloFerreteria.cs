@@ -9,6 +9,7 @@ namespace Reboot.Models
         public int? PrecioVenta { get; set; }
         public int? PrecioCosto { get; set; }
         public int? SubCategoriaId { get; set; }
+        public int Stock { get; set; }
 
     }
 }
