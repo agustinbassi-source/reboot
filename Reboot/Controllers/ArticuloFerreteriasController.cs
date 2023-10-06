@@ -53,7 +53,7 @@ namespace Reboot.Controllers
 
         // GET: api/ArticuloFerreterias/5
         [HttpGet("{texto}")]
-        [Authorize( Roles ="superUser,asdfasd")]
+        [Authorize]
         public async Task<ActionResult<List<ArticuloFerreteria>>> BuscarArticulos(string texto)
         {
 
