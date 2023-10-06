@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -52,8 +53,12 @@ namespace Reboot.Controllers
 
         // GET: api/ArticuloFerreterias/5
         [HttpGet("{texto}")]
+        [Authorize( Roles ="superUser,asdfasd")]
         public async Task<ActionResult<List<ArticuloFerreteria>>> BuscarArticulos(string texto)
         {
+
+            var user = HttpContext.User;
+
             var articulosEncontrados = _context
                 .ArticuloFerreteria
                 .Where(x => x.NombreDeArticulo.Contains(texto))
