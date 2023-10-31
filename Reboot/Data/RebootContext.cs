@@ -23,5 +23,9 @@ namespace Reboot.Data
         public DbSet<Reboot.Models.DetalleDelPedido> DetalleDelPedido { get; set; } = default!;
         public DbSet<Reboot.Models.Categoria> Categoria { get; set; } = default!;
         public DbSet<Reboot.Models.SubCategoria> SubCategoria { get; set; } = default!;
+
+        public DbSet<Reboot.Models.PedidoDeInformacion> PedidoDeInformacion { get; set; } = default!;
+        public DbSet<Reboot.Models.Empresa> Empresa { get; set; } = default!;
+        public DbSet<Reboot.Models.Postulante> Postulante { get; set; } = default!;
     }
 }
