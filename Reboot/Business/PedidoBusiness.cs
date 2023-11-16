@@ -4,7 +4,7 @@ using Reboot.Repository;
 
 namespace Reboot.Business
 {
-    public class PedidoBusiness
+    public class PedidoBusiness : IPedidoBusiness
     {
         private readonly PedidoRepository _pedidoRepository;
 
@@ -22,9 +22,9 @@ namespace Reboot.Business
 
         public void EliminarDetalleDelPedido(int idDetalle)
         {
-             _pedidoRepository.EliminarDetalleDelPedido(idDetalle);
+            _pedidoRepository.EliminarDetalleDelPedido(idDetalle);
 
-           
+
         }
     }
 }

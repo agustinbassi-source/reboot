@@ -1,10 +1,11 @@
-﻿using Reboot.Data;
+﻿using Reboot.Business.Interface;
+using Reboot.Data;
 using Reboot.Models;
 using Reboot.Repository;
 
 namespace Reboot.Business
 {
-    public class ClienteBusiness
+    public class ClienteBusiness : IClienteBusiness
     {
         private readonly ClienteRepository _repository;
 
@@ -58,6 +59,12 @@ namespace Reboot.Business
 
             // 2 - Retorno los cliente 
             return clientes;
+        }
+
+        public void EliminarCliente(int id)
+        { 
+            // EJEMPLO 1
+          // _repository....
         }
     }
 }
